@@ -31,8 +31,6 @@ public class Supplier extends Thread {
 
     private Request_http stock_request;
 
-    private Response_http stock_response;
-
     Supplier(Socket client) {
         this.client = client;
         try {
@@ -44,12 +42,10 @@ public class Supplier extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public void run() {
-        super.run();
         Server.conectados++;
         System.out.println("Se conecto un usuario: " + Server.conectados + " activos...");
         while (true) {

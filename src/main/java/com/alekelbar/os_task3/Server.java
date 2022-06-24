@@ -5,23 +5,19 @@
 package com.alekelbar.os_task3;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class Server {
 
-    
-    private String stock;
     public static int conectados;
-            
+
     public static void main(String[] args) {
-        ServerSocket server = null;
         try {
+            int port = 65000;
+            ServerSocket server = new ServerSocket(port);
+            
             while (true) {
-                int port = 65000;
-                server = new ServerSocket(port);
                 System.out.println("Server listen at: " + server.getInetAddress() + " on port: " + server.getLocalPort());
                 Socket client = server.accept(); // Cliente
 
@@ -30,11 +26,7 @@ public class Server {
                 observable.start();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Se desconecto el serviodor...");
         }
-    }
-    
-    void readStock(){
-        
     }
 }
